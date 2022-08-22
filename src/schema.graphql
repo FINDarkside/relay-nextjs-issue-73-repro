@@ -1,0 +1,4 @@
+type Query {
+  test(num: Int): String
+  test2(num: Int): String
+}
