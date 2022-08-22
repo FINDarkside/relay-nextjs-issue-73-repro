@@ -4,6 +4,7 @@ import { graphql } from "react-relay/hooks";
 import { getClientEnvironment } from "../getClientEnvironment";
 import { pagesFrontQuery } from "../queries/__generated__/pagesFrontQuery.graphql";
 import Component from "../Component";
+import { Suspense } from "react";
 
 const PagesFrontQuery = graphql`
   query pagesFrontQuery($counter: Int) {
@@ -20,7 +21,9 @@ const HomePage = ({ preloadedQuery }: Props) => {
   return (
     <div>
       <div>{data.test}</div>
-      <Component fragmentRef={data} />
+      <Suspense fallback="loading">
+        <Component fragmentRef={data} />
+      </Suspense>
     </div>
   );
 };
